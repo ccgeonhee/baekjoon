@@ -10,10 +10,19 @@ def prime_list(min_val, max_val):
     return [i for i in range(min_val, max_val+1) if sieve[i]]
 
 
-input_str = input()
-min_val, max_val = int(input_str.split()[0]), int(input_str.split()[1])
-prime_num = prime_list(min_val, max_val)
-for num in prime_num:
-    print(num)
+max_val_arr = []
+min_val_arr = []
+while 1:
+    input_str = int(input())
+    if input_str == 0:
+        break
+    else:
+        min_val_arr.append(input_str+1)
+        max_val_arr.append(input_str*2)
+
+for i in range(len(min_val_arr)):
+    min_val, max_val = min_val_arr[i], max_val_arr[i]
+    prime_num = prime_list(min_val, max_val)
+    print(len(prime_num))
 
 
