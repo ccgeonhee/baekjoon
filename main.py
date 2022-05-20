@@ -7,22 +7,21 @@ def prime_list(min_val, max_val):
             for j in range(i+i, max_val+1, i):
                 sieve[j] = False
 
-    return [i for i in range(min_val, max_val+1) if sieve[i]]
+    return sieve
 
 
-max_val_arr = []
-min_val_arr = []
-while 1:
-    input_str = int(input())
-    if input_str == 0:
-        break
-    else:
-        min_val_arr.append(input_str+1)
-        max_val_arr.append(input_str*2)
+test_case_num = int(input())
 
-for i in range(len(min_val_arr)):
-    min_val, max_val = min_val_arr[i], max_val_arr[i]
-    prime_num = prime_list(min_val, max_val)
-    print(len(prime_num))
+test_case_arr = []
+for i in range(test_case_num):
+    test_case_arr.append(int(input()))
 
+prime_arr = prime_list(0, 10000)
+for case in test_case_arr:
+    result_case = []
 
+    half_case = case // 2
+    for i in range(half_case, 1, -1):
+        if prime_arr[case - i] is True and prime_arr[i] is True:
+            print(i, case - i)
+            break
