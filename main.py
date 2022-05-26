@@ -1,21 +1,17 @@
-def recursion(n, cnt):
-    if cnt == 0:
-        string = f'어느 한 컴퓨터공학과 학생이 유명한 교수님을 찾아가 물었다.\n"재귀함수가 뭔가요?"\n"잘 들어보게. 옛날옛날 한 산 꼭대기에 이세상 모든 지식을 통달한 선인이 있었어.\n마을 사람들은 모두 그 선인에게 수많은 질문을 했고, 모두 지혜롭게 대답해 주었지.\n그의 답은 대부분 옳았다고 하네. 그런데 어느 날, 그 선인에게 한 선비가 찾아와서 물었어."'
-        print(string)
-        print(('____' * cnt) + recursion(n, cnt + 1))
-    if cnt != 0 and cnt != n:
-        string = f'{("____" * cnt)}"재귀함수가 뭔가요?"\n{("____" * cnt)}"잘 들어보게. 옛날옛날 한 산 꼭대기에 이세상 모든 지식을 통달한 선인이 있었어.\n{("____" * cnt)}마을 사람들은 모두 그 선인에게 수많은 질문을 했고, 모두 지혜롭게 대답해 주었지.\n{("____" * cnt)}그의 답은 대부분 옳았다고 하네. 그런데 어느 날, 그 선인에게 한 선비가 찾아와서 물었어."'
-        print(string)
-        print(('____' * cnt) + recursion(n, cnt+1))
-        string = "라고 답변하였지."
-        return string
-    if cnt == n:
-        string = f'{("____" * cnt)}"재귀함수가 뭔가요?"\n{("____" * cnt)}"재귀함수는 자기 자신을 호출하는 함수라네"'
-        print(string)
-        string = "라고 답변하였지."
-        print(('____' * cnt) + string)
-        return string
+input_string = input()
 
+num, max_sum = int(input_string.split()[0]), int(input_string.split()[1])
 
-num = int(input())
-recursion(num, 0)
+card = input()
+card_arr = [int(i) for i in card.split()]
+
+sum_val = 0
+for i in range(len(card_arr) - 2):
+    for k in range(i+1, len(card_arr)):
+        bundle = card_arr[i] + card_arr[k]
+        for j in range(k+1, len(card_arr)):
+            if sum_val < bundle + card_arr[j] <= max_sum:
+                sum_val = bundle + card_arr[j]
+
+print(sum_val)
+
