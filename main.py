@@ -1,17 +1,14 @@
-input_string = input()
+num = int(input())
 
-num, max_sum = int(input_string.split()[0]), int(input_string.split()[1])
-
-card = input()
-card_arr = [int(i) for i in card.split()]
-
-sum_val = 0
-for i in range(len(card_arr) - 2):
-    for k in range(i+1, len(card_arr)):
-        bundle = card_arr[i] + card_arr[k]
-        for j in range(k+1, len(card_arr)):
-            if sum_val < bundle + card_arr[j] <= max_sum:
-                sum_val = bundle + card_arr[j]
-
-print(sum_val)
-
+err = 1
+val = 0
+for i in range(num):
+    string_num = str(i)
+    sum_val = i
+    for j in string_num:
+        sum_val += int(j)
+    if sum_val == num:
+        err = 0
+        val = i
+        break
+print(val)
